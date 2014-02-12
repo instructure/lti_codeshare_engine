@@ -1,0 +1,41 @@
+<script type="text/x-handlebars">
+  <header>
+    <h3>&lt;codeshare&gt;</h3>
+  </header>
+  <div class="container">
+    {{outlet}}
+  </div>
+</script>
+
+<script type="text/x-handlebars" id="index">
+  <p>
+    Copy and paste the URL from your jsbin, jsfiddle, codepen or plnkr code snippet and paste below:
+  </p>
+
+  {{#if error}}
+    <div class="alert alert-danger">{{error}}</div>
+  {{/if}}
+
+  {{#unless entry}}
+    <form {{action verify on="submit"}}>
+      {{input type="text" value=url class="form-control" placeholder="paste url here (e.g. http://jsbin.com/ElAxUceK/1/edit)"}}
+      <button type="submit" class="btn btn-large btn-black btn-block">Verify</button>
+    </form>
+  {{/unless}}
+
+  {{#if entry}}
+    <div class="alert alert-info text-center">{{url}}</div>
+    <a href="#" {{action embed on="click"}} class="btn btn-large btn-primary btn-block">Embed Code</a>
+    <a href="#" {{action reset on="click"}} class="btn btn-xs btn-link btn-block">Try again</a>
+  {{/if}}
+</script>
+
+<script type="text/x-handlebars" id="embed">
+  <p>
+    You're not in a system that supports auto-inserting content,
+    so you'll need to copy and past the following code by hand
+    in order to insert it into your content.
+  </p>
+
+  {{textarea value=embedCode rows="7" class="form-control"}} 
+</script>

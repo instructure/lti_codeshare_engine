@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LtiCodeshareEngine</title>
+  <script type="text/javascript">
+    window.ENV = <%=raw @env.to_json %>;
+  </script>
+  <%= stylesheet_link_tag    "lti_codeshare_engine/application", media: "all" %>
+  <%= javascript_include_tag "lti_codeshare_engine/application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= yield %>
+
+</body>
+</html>
